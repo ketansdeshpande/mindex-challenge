@@ -1,0 +1,21 @@
+<div class="dr-container">
+  <dl>
+    <dt class="dr-header">Direct Reports:</dt>
+    <dd class="directReportsBody">
+      <ng-container *ngFor="let dr of drs">
+        <!--Bind by id for DOM manipulation later-->
+        <p [id]="dr.id" class="dr">
+          {{ dr.firstName }} {{ dr.lastName }}, {{ dr.position }}
+          <span class="dr-buttons"
+            ><button mat-button>
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-button>
+              <mat-icon>delete</mat-icon>
+            </button></span
+          >
+        </p>
+      </ng-container>
+    </dd>
+  </dl>
+</div>

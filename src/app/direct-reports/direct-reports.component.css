@@ -1,0 +1,21 @@
+.dr-container {
+  background: #f8f9fa;
+}
+
+.dr {
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+.dr-buttons {
+  float: right;
+}
+
+.dr-header {
+  background-color: #6c757d;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
