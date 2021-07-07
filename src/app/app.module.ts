@@ -10,6 +10,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
+import { MatDialogModule } from "@angular/material/dialog";
 
 import { AppComponent } from "./app.component";
 import { EmployeeComponent } from "./employee/employee.component";
@@ -18,6 +19,7 @@ import { DirectReportsComponent } from "./direct-reports/direct-reports.componen
 
 import { EmployeeService } from "./employee.service";
 import { BackendlessMockService } from "./backendless-mock.service";
+import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { BackendlessMockService } from "./backendless-mock.service";
     EmployeeComponent,
     EmployeeListComponent,
     DirectReportsComponent,
+    EditEmployeeComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { BackendlessMockService } from "./backendless-mock.service";
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
+    MatDialogModule,
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent],

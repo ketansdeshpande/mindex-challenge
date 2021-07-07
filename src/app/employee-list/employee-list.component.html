@@ -1,4 +1,9 @@
-<mat-grid-list class="employee-list" cols="4">
+<mat-grid-list
+  class="employee-list"
+  cols="1"
+  [rowHeight]="350"
+  [gutterSize]="'0px'"
+>
   <mat-grid-tile *ngFor="let emp of employees">
     <app-employee [employee]="emp" [employees]="employees"></app-employee>
   </mat-grid-tile>

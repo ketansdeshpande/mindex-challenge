@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { EditEmployeeComponent } from "../edit-employee/edit-employee.component";
 import { Employee } from "../employee";
 
 @Component({
@@ -9,9 +11,23 @@ import { Employee } from "../employee";
 export class DirectReportsComponent implements OnInit {
   @Input() drs;
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {
-    console.log(this.drs);
+  ngOnInit(): void {}
+
+  editDirectReport(employee: Employee) {
+    const dialogRef = this.dialog.open(EditEmployeeComponent, {
+      data: { employee, edit: true },
+    });
+
+    dialogRef.afterClosed().subscribe();
+  }
+
+  deleteDirectReport(employee: Employee) {
+    const dialogRef = this.dialog.open(EditEmployeeComponent, {
+      data: { employee, edit: false },
+    });
+
+    dialogRef.afterClosed().subscribe();
   }
 }

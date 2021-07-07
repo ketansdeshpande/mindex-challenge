@@ -2,20 +2,35 @@
   <dl>
     <dt class="dr-header">Direct Reports:</dt>
     <dd class="directReportsBody">
-      <ng-container *ngFor="let dr of drs">
-        <!--Bind by id for DOM manipulation later-->
-        <p [id]="dr.id" class="dr">
-          {{ dr.firstName }} {{ dr.lastName }}, {{ dr.position }}
-          <span class="dr-buttons"
-            ><button mat-button>
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-button>
-              <mat-icon>delete</mat-icon>
-            </button></span
-          >
-        </p>
-      </ng-container>
+      <table *ngIf="!drs.length">
+        <ng-container>
+          <tr class="dr">
+            <td colspan="3">This employee has no reports.</td>
+          </tr>
+        </ng-container>
+      </table>
+
+      <table *ngIf="drs.length">
+        <ng-container *ngFor="let dr of drs">
+          <!--Bind by id for DOM manipulation later-->
+          <tr [id]="dr.id" class="dr">
+            <td>{{ dr.firstName }} {{ dr.lastName }}</td>
+            <td>
+              {{ dr.position }}
+            </td>
+            <td>
+              <span class="dr-buttons"
+                ><button (click)="editDirectReport(dr)" mat-button>
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button (click)="deleteDirectReport(dr)" mat-button>
+                  <mat-icon>delete</mat-icon>
+                </button></span
+              >
+            </td>
+          </tr>
+        </ng-container>
+      </table>
     </dd>
   </dl>
 </div>

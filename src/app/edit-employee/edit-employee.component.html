@@ -1,0 +1,47 @@
+<modal-dialog *ngIf="data.edit">
+  <mat-dialog-title>UPDATE COMPENSATION</mat-dialog-title>
+  <mat-dialog-content>
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput [(value)]="data.employee.firstName" disabled />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input matInput [(value)]="data.employee.lastName" disabled />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Position</mat-label>
+      <input matInput [(value)]="data.employee.position" disabled />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Compensation</mat-label>
+      <input matInput [(ngModel)]="data.employee.compensation" required />
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button
+      mat-button
+      [mat-dialog-close]="data.employee.compensation"
+      (click)="onSave()"
+    >
+      SAVE
+    </button>
+    <button mat-button (click)="onCancel()">CANCEL</button>
+  </mat-dialog-actions>
+</modal-dialog>
+
+<modal-dialog *ngIf="!data.edit">
+  <mat-dialog-title>DELETE DIRECT REPORT</mat-dialog-title>
+  <mat-dialog-content>
+    Permanently delete direct report {{ data.employee.firstName }}
+    {{ data.employee.lastName }}?
+  </mat-dialog-content>
+  <br />
+  <mat-dialog-content> This action cannot be undone. </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data.employee" (click)="onDelete()">
+      OK
+    </button>
+    <button mat-button (click)="onCancel()">CANCEL</button>
+  </mat-dialog-actions>
+</modal-dialog>

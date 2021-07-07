@@ -1,0 +1,12 @@
+mat-dialog-title {
+  color: #0066ba;
+  font-size: 25px;
+}
+
+mat-dialog-content {
+  padding-top: 20px;
+}
+
+mat-form-field {
+  display: block;
+}
