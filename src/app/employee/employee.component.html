@@ -13,6 +13,10 @@
       <dt>Job Title</dt>
       <dd>{{ employee.position }}</dd>
     </dl>
-    <app-direct-reports [drs]="directReports"></app-direct-reports>
+    <app-direct-reports
+      [drs]="directReports"
+      (saveEmployee)="saveEmployee.emit($event)"
+      (deleteEmployee)="deleteEmployee.emit($event)"
+    ></app-direct-reports>
   </mat-card-content>
 </mat-card>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject, Output, EventEmitter } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { Employee } from "../employee";
 import { EmployeeService } from "../employee.service";
 
 @Component({
@@ -8,7 +9,8 @@ import { EmployeeService } from "../employee.service";
   styleUrls: ["./edit-employee.component.css"],
 })
 export class EditEmployeeComponent implements OnInit {
-  // @Output() btnClick = new EventEmitter<Employee>();
+  @Output() saveEmployee = new EventEmitter<Employee>();
+  @Output() deleteEmployee = new EventEmitter<Employee>();
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -25,14 +27,14 @@ export class EditEmployeeComponent implements OnInit {
 
   onSave(): void {
     console.log(this.data.employee);
-    this.employeeService.save(this.data.employee);
-    // this.btnClick.emit(this.data.employee);
+    // this.employeeService.save(this.data.employee);
+    this.saveEmployee.emit(this.data.employee);
   }
 
   onDelete(): void {
     console.log(this.data.employee);
-    this.employeeService.remove(this.data.employee);
-    // this.btnClick.emit(this.data.employee);
+    // this.employeeService.remove(this.data.employee);
+    this.deleteEmployee.emit(this.data.employee);
   }
 
   onCancel(): void {

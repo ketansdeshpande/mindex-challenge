@@ -5,6 +5,11 @@
   [gutterSize]="'0px'"
 >
   <mat-grid-tile *ngFor="let emp of employees">
-    <app-employee [employee]="emp" [employees]="employees"></app-employee>
+    <app-employee
+      [employee]="emp"
+      [employees]="employees"
+      (saveEmployee)="updateEmployee($event)"
+      (deleteEmployee)="deleteEmployee($event)"
+    ></app-employee>
   </mat-grid-tile>
 </mat-grid-list>
