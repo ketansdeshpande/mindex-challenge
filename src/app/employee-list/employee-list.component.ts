@@ -53,7 +53,10 @@ export class EmployeeListComponent implements OnInit {
    */
   updateEmployee(data) {
     this.employeeService.save(data).subscribe(
-      (res) => this.getAllEmployees(),
+      (res) => {
+        alert("Updated successfully!");
+        this.getAllEmployees();
+      },
       (err) => this.handleError(err),
       () => console.log("HTTP request completed.")
     );
@@ -66,6 +69,7 @@ export class EmployeeListComponent implements OnInit {
   deleteEmployee(data) {
     this.employeeService.remove(data).subscribe(
       (res) => {
+        alert("Deleted successfully!");
         this.getAllEmployees();
         this.filterDeletedEmployees(data);
         this.reCalculateTotalReports();
