@@ -12,7 +12,7 @@ import { Employee } from "../employee";
 export class DirectReportsComponent implements OnInit {
   private saveListener: Subscription;
   private deleteListener: Subscription;
-  @Input() drs;
+  @Input() drs: Employee[];
   @Output() saveEmployee = new EventEmitter<Employee>();
   @Output() deleteEmployee = new EventEmitter<Employee>();
 
@@ -20,6 +20,10 @@ export class DirectReportsComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * Method to open edit dialog box and to emit save method
+   * @param employee from edit employee component emitter
+   */
   editDirectReport(employee: Employee) {
     const dialogRef = this.dialog.open(EditEmployeeComponent, {
       data: { employee, edit: true },
@@ -27,7 +31,6 @@ export class DirectReportsComponent implements OnInit {
 
     this.saveListener = dialogRef.componentInstance.saveEmployee.subscribe(
       (data: Employee) => {
-        console.log("dialog data", data);
         this.saveEmployee.emit(data);
       }
     );
@@ -35,6 +38,10 @@ export class DirectReportsComponent implements OnInit {
     dialogRef.afterClosed().subscribe();
   }
 
+  /**
+   * Method to open delete dialog box and to emit remove method
+   * @param employee from edit employee component emitter
+   */
   deleteDirectReport(employee: Employee) {
     const dialogRef = this.dialog.open(EditEmployeeComponent, {
       data: { employee, edit: false },
@@ -42,7 +49,6 @@ export class DirectReportsComponent implements OnInit {
 
     this.deleteListener = dialogRef.componentInstance.deleteEmployee.subscribe(
       (data: Employee) => {
-        console.log("dialog data", data);
         this.deleteEmployee.emit(data);
       }
     );
@@ -50,6 +56,10 @@ export class DirectReportsComponent implements OnInit {
     dialogRef.afterClosed().subscribe();
   }
 
+  /**
+   * Life-cycle method called when component is destroyed
+   * to unsubscribe methods which are subscribed
+   */
   ngOnDestroy(): void {
     this.saveListener?.unsubscribe();
     this.deleteListener?.unsubscribe();

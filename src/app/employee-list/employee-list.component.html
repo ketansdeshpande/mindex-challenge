@@ -4,10 +4,10 @@
   [rowHeight]="350"
   [gutterSize]="'0px'"
 >
-  <mat-grid-tile *ngFor="let emp of employees">
+  <mat-grid-tile *ngFor="let emp of employees; let i = index">
     <app-employee
       [employee]="emp"
-      [employees]="employees"
+      [totalAndDirectReports]="totalAndDirectReports[i]"
       (saveEmployee)="updateEmployee($event)"
       (deleteEmployee)="deleteEmployee($event)"
     ></app-employee>

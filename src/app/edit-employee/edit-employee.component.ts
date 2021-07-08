@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject, Output, EventEmitter } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 import { Employee } from "../employee";
-import { EmployeeService } from "../employee.service";
 
 @Component({
   selector: "app-edit-employee",
@@ -14,29 +13,29 @@ export class EditEmployeeComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<EditEmployeeComponent>,
-    private employeeService: EmployeeService
-  ) {
-    // this.compensation = data.employee.compensation;
-    // this.dialogRef.afterClosed().subscribe((result) => {
-    //   this.data.employee.compensation = this.compensation;
-    // });
-  }
+    public dialogRef: MatDialogRef<EditEmployeeComponent>
+  ) {}
 
   ngOnInit(): void {}
 
+  /**
+   * Event handler on save click to emit the event to employee component
+   */
   onSave(): void {
-    console.log(this.data.employee);
-    // this.employeeService.save(this.data.employee);
-    this.saveEmployee.emit(this.data.employee);
+    if (this.data.employee.compensation && this.data.employee.compensation > 0)
+      this.saveEmployee.emit(this.data.employee);
   }
 
+  /**
+   * Event handler on delete click to emit the event to employee component
+   */
   onDelete(): void {
-    console.log(this.data.employee);
-    // this.employeeService.remove(this.data.employee);
     this.deleteEmployee.emit(this.data.employee);
   }
 
+  /**
+   * Event handler on cancel click to close the dialog box
+   */
   onCancel(): void {
     this.dialogRef.close();
   }

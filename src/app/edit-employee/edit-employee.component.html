@@ -1,5 +1,5 @@
-<modal-dialog *ngIf="data.edit">
-  <mat-dialog-title>UPDATE COMPENSATION</mat-dialog-title>
+<div modal-dialog *ngIf="data.edit">
+  <h2 mat-dialog-title>UPDATE COMPENSATION</h2>
   <mat-dialog-content>
     <mat-form-field>
       <mat-label>First Name</mat-label>
@@ -28,10 +28,10 @@
     </button>
     <button mat-button (click)="onCancel()">CANCEL</button>
   </mat-dialog-actions>
-</modal-dialog>
+</div>
 
-<modal-dialog *ngIf="!data.edit">
-  <mat-dialog-title>DELETE DIRECT REPORT</mat-dialog-title>
+<div modal-dialog *ngIf="!data.edit">
+  <h2 mat-dialog-title>DELETE DIRECT REPORT</h2>
   <mat-dialog-content>
     Permanently delete direct report {{ data.employee.firstName }}
     {{ data.employee.lastName }}?
@@ -44,4 +44,4 @@
     </button>
     <button mat-button (click)="onCancel()">CANCEL</button>
   </mat-dialog-actions>
-</modal-dialog>
+</div>

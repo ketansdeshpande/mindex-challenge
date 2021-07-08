@@ -19,7 +19,7 @@ import { DirectReportsComponent } from "./direct-reports/direct-reports.componen
 
 import { EmployeeService } from "./employee.service";
 import { BackendlessMockService } from "./backendless-mock.service";
-import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import { EditEmployeeComponent } from "./edit-employee/edit-employee.component";
 
 @NgModule({
   declarations: [
